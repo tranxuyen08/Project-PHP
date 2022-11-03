@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\Categories;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
+use App\Models\Categories;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+Route::get('/category', [CategoryController::class, 'category'])->name('category.category');
+
 
 Route::get('/', function () {
     return view('welcome');
