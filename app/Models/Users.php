@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Model
+class Users extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -17,7 +17,7 @@ class User extends Model
 
    protected $primarykey = 'id';
 
-   protected $fillable = ['email', 'password', 'created_at', 'updated_at'];
+   protected $fillable = ['email', 'name', 'password', 'created_at', 'updated_at'];
 
    protected $hidden = [
     'password',
@@ -28,7 +28,7 @@ class User extends Model
     }
 
     public function orders() {
-        return $this->hasMany(Oders::class, 'user_id');
+        return $this->hasMany(Orders::class, 'user_id');
     }
 
 }

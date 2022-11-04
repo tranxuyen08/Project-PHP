@@ -16,7 +16,7 @@ class Coupons extends Model
     protected $fillable = ['code', 'created_at', 'updated_at'];
 
     public function orders() {
-        return $this->hasMany(Oders::class, 'coupon_id');
+        return $this->hasMany(Orders::class, 'coupon_id');
     }
 
 }
