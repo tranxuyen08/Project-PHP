@@ -8,12 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Products extends Model
 {
     use HasFactory;
-    protected $table = 'product';
+    protected $table = 'products';
 
     protected $primarykey = 'id';
 
-    protected $fillable = ['categry_id', 'name', 'amount', 'created_at', 'updated_at'];
+    protected $fillable = ['category_id', 'name', 'amount', 'created_at', 'updated_at'];
 
-    protected $dateFormat = 'U';
-    
+    public function productOrders() {
+        return $this->hasMany(ProductOrders::class, 'product_id');
+    }
+
+    public function category() {
+        return $this->hasOne(Category::class);
+    }
 }
