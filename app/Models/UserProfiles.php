@@ -16,4 +16,8 @@ class UserProfiles extends Model
     protected $fillable = ['user_id', 'phone_number', 'country', 'city', 'address', 'date_of_birth', 'status', 'gender', 'created_at', 'updated_at'];
 
     protected $dateFormat = 'U';
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

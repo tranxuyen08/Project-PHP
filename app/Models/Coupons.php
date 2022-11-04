@@ -15,5 +15,8 @@ class Coupons extends Model
 
     protected $fillable = ['code', 'created_at', 'updated_at'];
 
-    protected $dateFormat = 'U';
+    public function orders() {
+        return $this->hasMany(Oders::class, 'coupon_id');
+    }
+
 }

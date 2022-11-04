@@ -15,5 +15,11 @@ class ProductOders extends Model
 
     protected $fillable = ['oder_id', 'product_id', 'created_at', 'updated_at'];
 
-    protected $dateFormat = 'U';
+    public function product() {
+        return $this->belongsTo(Products::class);
+    }
+
+    public function order() {
+        return $this->belongsTo(Oders::class);
+    }
 }

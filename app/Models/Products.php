@@ -14,6 +14,11 @@ class Products extends Model
 
     protected $fillable = ['categry_id', 'name', 'amount', 'created_at', 'updated_at'];
 
-    protected $dateFormat = 'U';
-    
+    public function productOders() {
+        return $this->hasMany(ProductOders::class, 'product_id');
+    }
+
+    public function category() {
+        return $this->hasOne(Category::class);
+    }
 }

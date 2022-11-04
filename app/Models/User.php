@@ -23,7 +23,12 @@ class User extends Model
     'password',
     ];
 
-    protected $dateFormat = 'U';
+    public function userProfile() {
+        return $this->hasOne(UserProfiles::class, 'user_id');
+    }
 
+    public function orders() {
+        return $this->hasMany(Oders::class, 'user_id');
+    }
 
 }

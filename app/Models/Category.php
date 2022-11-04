@@ -15,5 +15,8 @@ class Category extends Model
 
     protected $fillable = ['name', 'created_at', 'updated_at'];
 
-    protected $dateFormat = 'U';
+    public function products() {
+        return $this->hasMany(Products::class, 'category_id');
+    }
+
 }

@@ -14,7 +14,12 @@ class CreateOdersTable extends Migration
     public function up()
     {
         Schema::create('oders', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('coupon_id');
+            $table->integer('status');
+            $table->bigInteger('quantity');
+            $table->bigInteger('amount');
             $table->timestamps();
         });
     }

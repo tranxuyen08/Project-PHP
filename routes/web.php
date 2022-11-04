@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Models\Categories;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::get('/category', [CategoryController::class, 'category'])->name('category.category');
+Route::get('/product', [ProductController::class, 'product'])->name('products.products');
 
 
 Route::get('/', function () {

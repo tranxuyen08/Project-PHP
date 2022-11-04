@@ -14,7 +14,9 @@ class CreateProductOdersTable extends Migration
     public function up()
     {
         Schema::create('product_oders', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('order_id');
+            $table->integer('product_id');
             $table->timestamps();
         });
     }

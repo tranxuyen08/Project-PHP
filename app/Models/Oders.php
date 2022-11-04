@@ -15,5 +15,15 @@ class Oders extends Model
 
     protected $fillable = ['user_id', 'amount', 'quantity', 'status', 'coupon_id', 'created_at', 'updated_at'];
 
-    protected $dateFormat = 'U';
+    public function users() {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function productOrders() {
+        return $this->hasMany(ProductOders::class, 'order_id');
+    }
+
+    public function coupon() {
+        return $this->belongsTo(Coupons::class);
+    }
 }
