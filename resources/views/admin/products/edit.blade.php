@@ -12,7 +12,12 @@
   @csrf
   @method('PUT')
   <input type="text" name="name" id="" value="<?php echo $product->name ?>">
-  <input type="text" name="category_id" id="" value="<?php echo $product->category_id ?>">
+  <select name="category_id" id="">
+    <option value=""></option>
+    <?php foreach ($categories as $category): ?>
+        <option <?php echo $product->id == $category->id ? 'selected' : '';  ?> value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+    <?php endforeach ?>
+  </select>
   <input type="text" name="amount" id="" value="<?php echo $product->amount ?>">
   <button type="submit">Update</button>
 </form>

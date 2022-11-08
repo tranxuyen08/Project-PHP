@@ -23,7 +23,7 @@
       <?php echo $product->amount ?>
     </td>
     <td>
-      <?php echo $product->category_id ?>
+      <?php echo $product->category->name ?>
     </td>
     <td>
       <?php echo $product->created_at ?>

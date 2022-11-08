@@ -11,7 +11,12 @@
 <form action="<?php echo route('admin.products.store') ?>"method="POST">
   @csrf
   <input type="text" name="name" id="" placeholder="Enter your name">
-  <input type="text" name="category_id" id="" placeholder="Enter your category_id">
+  <select name="category_id" id="">
+        <option value=""></option>
+        <?php foreach ($categories as $category): ?>
+            <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+        <?php endforeach ?>
+  </select>
   <input type="text" name="amount" id="" placeholder="Enter your amount">
   <button type="submit">Submit</button>
 </form>

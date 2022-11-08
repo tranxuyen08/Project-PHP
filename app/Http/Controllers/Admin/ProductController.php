@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateProductsRequest;
 use App\Http\Requests\Admin\UpdateCouponRequest;
 use App\Http\Requests\Admin\UpdateProductsRequest;
+use App\Models\Category;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,7 @@ class ProductController extends Controller
         $limit = 10;
         $totalPage = ceil($total / $limit);
         $offset = ($page - 1) * $limit;
-
-        $products = Products::select()->limit($limit)->offset($offset)->get();
+        $products = Products::with(['category'])->select()->limit($limit)->offset($offset)->get(); // 1 select * from products limit x offset x;
         return view('admin.products.index', [
             'total' => $total,
             'limit' => $limit,
@@ -28,7 +28,10 @@ class ProductController extends Controller
     }
 
     public function create() {
-        return view('admin.products.create');
+        $categories = Category::all();
+        return view('admin.products.create', [
+            'categories' => $categories
+        ]);
     }
 
     public function store(CreateProductsRequest $request) {
@@ -46,8 +49,10 @@ class ProductController extends Controller
 
     public function edit($id) {
         $product = Products::find($id);
+        $categories = Category::all();
         return view('admin.products.edit', [
             'product' => $product,
+            'categories' => $categories
         ]);
     }
 
