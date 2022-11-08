@@ -13,7 +13,7 @@ class Orders extends Model
 
     protected $primarykey = 'id';
 
-    protected $fillable = ['user_id', 'amount', 'quantity', 'status', 'coupon_id', 'created_at', 'updated_at'];
+    protected $fillable = ['user_id', 'amount', 'status', 'coupon_id', 'created_at', 'updated_at'];
 
     public function users() {
         return $this->belongsToMany(Users::class);
