@@ -18,7 +18,6 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id');
             $table->integer('coupon_id');
             $table->integer('status');
-            $table->bigInteger('quantity');
             $table->bigInteger('amount');
             $table->timestamps();
         });
