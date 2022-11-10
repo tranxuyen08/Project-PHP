@@ -70,8 +70,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/product-orders/create', [ProductOrderController::class, 'create'])->name('product_orders.create');
     Route::get('/product-orders/{id}/show', [ProductOrderController::class, 'show'])->name('product_orders.show');
     Route::get('/product-orders/{id}/edit', [ProductOrderController::class, 'edit'])->name('product_orders.edit');
-    Route::get('/product-orders/{id}/update', [ProductOrderController::class, 'update'])->name('product_orders.update');
+    Route::put('/product-orders/{id}/update', [ProductOrderController::class, 'update'])->name('product_orders.update');
     Route::delete('/product-orders/{id}/delete', [ProductOrderController::class, 'destroy'])->name('productorders.delete');
+
+    //user
+    Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [AdminUserController::class, 'create'])->name('users.create');
+    Route::post('/users/store', [AdminUserController::class, 'store'])->name('users.store');
+    Route::get('/users/{id}/show', [AdminUserController::class, 'show'])->name('users.show');
+    Route::get('/users/{id}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{id}/update', [AdminUserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{id}/delete', [AdminUserController::class, 'delete'])->name('users.delete');
+
 });
 
 Route::get('/', function () {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateCategoryRequest;
+use App\Http\Requests\Admin\UpdateCategoryRequest;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
@@ -52,7 +53,7 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function update(CreateCategoryRequest $request, $id) {
+    public function update(UpdateCategoryRequest $request, $id) {
 
         $name = $request->get('name');
 
