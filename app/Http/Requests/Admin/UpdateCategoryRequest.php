@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateUsersRequest extends FormRequest
+class UpdateCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,13 @@ class CreateUsersRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required'],
+            'name' => ['required'],
         ];
     }
 
-    public function messages()
-    {
+    public function messages() {
         return [
-            'email.required' => 'Email is required',
-            'email.email' => 'Email is not format',
-            'password.required' => 'Password is required',
+            'name.required' => 'Name is required'
         ];
     }
 }

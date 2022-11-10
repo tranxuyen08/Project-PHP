@@ -24,7 +24,11 @@ class UpdateUsersRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required'],
+            'email' => [
+                'required',
+                'email',
+                'unique:users,email,' . $this->id,
+            ],
             'password' => ['required'],
         ];
     }
@@ -33,6 +37,7 @@ class UpdateUsersRequest extends FormRequest
     {
         return [
             'email.required' => 'Email is required',
+            'email.email' => 'Email is not format',
             'password.required' => 'Password is required',
         ];
     }

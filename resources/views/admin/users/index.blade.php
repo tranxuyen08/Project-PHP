@@ -1,5 +1,6 @@
-<h1>Hello user page</h1>
+<h1>List Users Page</h1>
 <a href="<?php echo route('admin.users.create') ?>">Create</a>
+<p>Total : <?php echo $total ?></p>
 <table>
   <tr>
     <th>ID</th>
@@ -34,4 +35,4 @@
   <li><a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
   <?php endfor ?>
 </ul>
-<a href="">Admin page</a>
+<a href="<?php echo route('admin.index')?>">Admin page</a>
