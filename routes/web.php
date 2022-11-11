@@ -82,6 +82,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/users/{id}/update', [AdminUserController::class, 'update'])->name('users.update');
     Route::delete('/users/{id}/delete', [AdminUserController::class, 'delete'])->name('users.delete');
 
+    //login
+
 });
 
 Route::get('/', function () {

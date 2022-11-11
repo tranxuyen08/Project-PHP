@@ -1,4 +1,10 @@
-<h1>Create Coupons Page</h1>
+@extends('admin.layouts.app')
+@section('title')
+    Create Page Coupons
+@endsection
+@section('content')
+
+<h1 class="font-italic text-center">Create Coupons Page</h1>
 
 <?php if ($errors->any()) : ?>
     <div class="alert alert-danger">
@@ -12,6 +18,7 @@
 <form action="<?php echo route('admin.coupons.store') ?>"method="POST">
   @csrf
   <input type="text" name="code" id="" placeholder="Enter Your Code">
-  <button type="submit">Submit</button>
+  <button class="btn btn-primary" type="submit">Submit</button>
 </form>
-<a href="<?php echo route('admin.coupons.index') ?>">Back Coupons Page</a>
+<a class="btn btn-primary" href="<?php echo route('admin.coupons.index') ?>">Back Coupons Page</a>
+@endsection
