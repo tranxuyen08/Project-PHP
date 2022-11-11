@@ -1,4 +1,9 @@
-<h1>Edit Users page</h1>
+@extends('admin.layouts.app')
+@section('title')
+    Users Edit Page
+@endsection
+@section('content')
+<h1 class="font-italic text-center">Edit Users page</h1>
 <?php if ($errors->any()) : ?>
     <div class="alert alert-danger">
         <ul>
@@ -13,6 +18,7 @@
   @method('PUT')
   <input type="text" name="email" placeholder="Update your email" value="<?php echo $users->email ?>">
   <input type="password" name="password" placeholder="Update your password" value="<?php echo $users->password ?>">
-  <button type="submit">Submit</button>
+  <button class="btn btn-secondary" type="submit">Submit</button>
 </form>
-<a href="<?php echo route('admin.users.index') ?>">List Users Page</a>
+<a class="btn btn-primary" href="<?php echo route('admin.users.index') ?>">List Users Page</a>
+@endsection

@@ -1,4 +1,9 @@
-<h1>Edit Page</h1>
+@extends('admin.layouts.app')
+@section('title')
+    Edit Page Coupons
+@endsection
+@section('content')
+<h1 class="font-italic text-center">Edit Page</h1>
 <?php if ($errors->any()) : ?>
     <div class="alert alert-danger">
         <ul>
@@ -12,6 +17,7 @@
   @csrf
   @method('PUT')
   <input type="text" name="code" id="" value="<?php echo $coupon->code ?>">
-  <button type="submit">Update</button>
+  <button class="btn btn-secondary" type="submit">Update</button>
 </form>
-<a href="<?php echo route('admin.coupons.index') ?>">Back Coupons Page</a>
+<a class="btn btn-primary" href="<?php echo route('admin.coupons.index') ?>">Back Coupons Page</a>
+@endsection

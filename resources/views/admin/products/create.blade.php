@@ -1,4 +1,9 @@
-<h1>create page Products</h1>
+@extends('admin.layouts.app')
+@section('title')
+Create Cage Products
+@endsection
+@section('content')
+<h1 class="font-italic text-center">create page Products</h1>
 <?php if ($errors->any()) : ?>
     <div class="alert alert-danger">
         <ul>
@@ -18,6 +23,7 @@
         <?php endforeach ?>
   </select>
   <input type="text" name="amount" id="" placeholder="Enter your amount">
-  <button type="submit">Submit</button>
+  <button class="btn btn-secondary" type="submit">Submit</button>
 </form>
-<a href="<?php echo route('admin.products.index') ?>">Home Products</a>
+<a class="btn btn-primary" href="<?php echo route('admin.products.index') ?>">Home Products</a>
+@endsection
