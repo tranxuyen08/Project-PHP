@@ -6,5 +6,11 @@
         <a class="p-2 text-dark" href="#">Support</a>
         <a class="p-2 text-dark" href="#">Pricing</a>
     </nav>
-    <a class="btn btn-outline-primary" href="#">Sign up</a>
+    <?php if (Auth::user()): ?>
+        <p>{{ Auth::user()->email }}</p>
+        <a class="btn btn-danger" href="<?php echo route('admin.logout') ?>">Logout</a>
+    <?php else: ?>
+        <a class="btn btn-outline-primary" href="<?php echo route('admin.login.index') ?>">Sign up</a>
+    <?php endif ?>
+
 </div>

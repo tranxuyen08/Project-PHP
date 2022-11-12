@@ -7,17 +7,17 @@ use App\Http\Requests\Admin\CreateUsersRequest;
 use App\Http\Requests\Admin\UpdateUsersRequest;
 use Illuminate\Http\Request;
 use PharIo\Manifest\License;
-use App\Models\Users;
+use App\Models\User;
 
 class UserController extends Controller
 {
     public function index() {
-        $total = Users::count();
+        $total = User::count();
         $page = request()->get('page', 1);
         $limit = 10;
         $totalPage = ceil($total / $limit);
         $offset = ($page - 1) * $limit;
-        $users = Users::select()->limit($limit)->offset($offset)->get();
+        $users = User::select()->limit($limit)->offset($offset)->get();
         return view('admin.users.index', [
             'total' => $total,
             'totalPage' => $totalPage,
@@ -34,7 +34,7 @@ class UserController extends Controller
         $email = $request->get('email');
         $password = $request->get('password');
 
-        Users::create([
+        User::create([
             'email' => $email,
             'password' => $password,
         ]);
@@ -42,14 +42,14 @@ class UserController extends Controller
     }
 
     public function show($id) {
-        $users = Users::find($id);
+        $users = User::find($id);
         return view('admin.users.show', [
             'users' => $users,
         ]);
     }
 
     public function edit($id) {
-        $users = Users::find($id);
+        $users = User::find($id);
         return view('admin.users.edit', [
             'users' => $users,
         ]);
@@ -57,7 +57,7 @@ class UserController extends Controller
     public function update(UpdateUsersRequest $request, $id) {
         $email = $request->get('email');
         $password = $request->get('password');
-        Users::find($id)
+        User::find($id)
         ->update([
             'email' => $email,
             'password' => $password,
@@ -66,7 +66,7 @@ class UserController extends Controller
     }
 
     public function delete($id) {
-        $users = Users::find($id);
+        $users = User::find($id);
         $users->delete();
 
         return redirect(route('admin.users.index'));
