@@ -16,6 +16,6 @@ class UserProfiles extends Model
     protected $fillable = ['user_id', 'phone_number', 'country', 'city', 'address', 'date_of_birth', 'status', 'gender', 'created_at', 'updated_at'];
 
     public function user() {
-        return $this->belongsTo(Users::class);
+        return $this->belongsTo(User::class);
     }
 }

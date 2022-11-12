@@ -16,7 +16,7 @@ class Orders extends Model
     protected $fillable = ['user_id', 'amount', 'status', 'coupon_id', 'created_at', 'updated_at'];
 
     public function users() {
-        return $this->belongsToMany(Users::class);
+        return $this->belongsToMany(User::class);
     }
 
     public function productOrders() {
