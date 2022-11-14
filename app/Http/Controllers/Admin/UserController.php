@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\UpdateUsersRequest;
 use Illuminate\Http\Request;
 use PharIo\Manifest\License;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -33,12 +34,19 @@ class UserController extends Controller
     public function store(CreateUsersRequest $request) {
         $email = $request->get('email');
         $password = $request->get('password');
-        
-        User::create([
+        $credentials = [
             'email' => $email,
             'password' => $password,
-        ]);
-        return redirect(route('admin.users.index'));
+            'role' => User::ROLE_ADMIN,
+        ];
+        // User::create([
+        //     'email' => $email,
+        //     'password' => $password,
+        // ]);
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect(route('admin.users.index'));
+        }
     }
 
     public function show($id) {
