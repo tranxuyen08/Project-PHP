@@ -9,17 +9,17 @@
     <h1 class="font-italic text-center">List Coupons page</h1>
     <p>Total : <?php echo $total; ?></p>
     <a class="btn btn-primary" href="<?php echo route('admin.coupons.create'); ?>">Create</a>
-    <table class="container">
+    <table class="container table table-striped table-bordered">
         <tr>
-            <th>ID</th>
-            <th>Code</th>
-            <th>Created At</th>
-            <th>Updated At</th>
-            <th>Action</th>
+            <th scope="col">ID</th>
+            <th scope="col">Code</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Updated At</th>
+            <th scope="col">Action</th>
         </tr>
         <?php foreach($coupons as $coupon) :?>
         <tr>
-            <td>
+            <td >
                 <?php echo $coupon->id; ?>
             </td>
             <td>
@@ -31,16 +31,21 @@
             <td>
                 <?php echo $coupon->updated_at; ?>
             </td>
-            <td>
+            <td class="d-flex justify-content-around">
                 <a class="btn btn-secondary" href="<?php echo route('admin.coupons.edit', $coupon->id); ?>">Edit</a>
-            </td>
-            <td>
                 <form action="<?php echo route('admin.coupons.delete', $coupon->id); ?>" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
+            {{-- <td>
+                <form action="<?php echo route('admin.coupons.delete', $coupon->id); ?>" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </td> --}}
         </tr>
         <?php endforeach ?>
     </table>

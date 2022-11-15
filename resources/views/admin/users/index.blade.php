@@ -22,34 +22,35 @@
             <td><?php echo bcrypt($user->password); ?></td>
             <td><?php echo $user->created_at; ?></td>
             <td><?php echo $user->updated_at; ?></td>
-            <td>
+            <td class="d-flex justify-content-around">
                 <a class="btn btn-secondary" href="<?php echo route('admin.users.edit', $user->id); ?>">Edit</a>
-            </td>
-            <td>
                 <form action="<?php echo route('admin.users.delete', $user->id); ?>" method="POST">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
+            {{-- <td>
+                <form action="<?php echo route('admin.users.delete', $user->id); ?>" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </td> --}}
         </tr>
         <?php endforeach ?>
     </table>
     <div class="container">
+
         <nav aria-label="...">
             <ul class="pagination pagination-sm">
                 <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
-                <li class="page-item disabled">
-                    <a class="page-link" href="?page={{ $i }}" tabindex="-1">{{ $i }}</a>
-                </li>
+                    <li class="page-item {{ $page == $i ? 'disabled' : '' }}">
+                        <a class="page-link" href="?page={{ $i }}" tabindex="-1">{{ $i }}</a>
+                    </li>
                 <?php endfor ?>
             </ul>
         </nav>
     </div>
-    <ul>
-        <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
-        <li><a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
-        <?php endfor ?>
-    </ul>
     <a class="btn btn-primary" href="<?php echo route('admin.index'); ?>">Admin page</a>
 @endsection
