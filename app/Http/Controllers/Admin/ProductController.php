@@ -24,6 +24,7 @@ class ProductController extends Controller
             'limit' => $limit,
             'totalPage' => $totalPage,
             'products' => $products,
+            'page' => $page,
         ]);
     }
 

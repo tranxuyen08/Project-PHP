@@ -7,13 +7,13 @@
     <h1 class="font-italic text-center">Show List Category Page</h1>
     <a class="btn btn-primary" href="<?php echo route('admin.index'); ?>">Admin Page</a>
     <p>Total : <?php echo $total; ?></p>
-    <table class="container">
+    <table class="container table table-striped table-bordered">
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Created At</th>
-            <th>Updated At</th>
-            <th>Action</th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Updated At</th>
+            <th scope="col">Action</th>
 
         </tr>
         <?php foreach ($categories as $category) : ?>
@@ -30,16 +30,21 @@
             <td class="font-weight-normal">
                 <?php echo $category->updated_at; ?>
             </td>
-            <td>
+            <td class="d-flex justify-content-around">
                 <a class="btn btn-secondary" href="<?php echo route('admin.categories.edit', $category->id); ?>">Edit</a>
-            </td>
-            <td>
                 <form method="POST" action="<?php echo route('admin.categories.delete', $category->id); ?>">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
+            {{-- <td>
+                <form method="POST" action="<?php echo route('admin.categories.delete', $category->id); ?>">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </td> --}}
         </tr>
         <?php endforeach ?>
         <a class="btn btn-primary" href="<?php echo route('admin.categories.create'); ?>">Create</a>

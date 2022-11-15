@@ -26,6 +26,8 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
+            // select * from users where email = $email and passowrd = bcryp($password)
+            // and role = $role
             $request->session()->regenerate();
 
             return redirect(route('admin.index'));

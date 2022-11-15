@@ -23,6 +23,7 @@ class UserController extends Controller
             'totalPage' => $totalPage,
             'offset' => $offset,
             'users' => $users,
+            'page' => $page,
         ]);
     }
 
@@ -36,8 +37,10 @@ class UserController extends Controller
 
         User::create([
             'email' => $email,
-            'password' => $password,
+            'password' => bcrypt($password),
+            'role' => User::ROLE_USER,
         ]);
+
         return redirect(route('admin.users.index'));
     }
 
