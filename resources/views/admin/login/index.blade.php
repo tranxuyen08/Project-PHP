@@ -46,7 +46,7 @@ Login Page
             <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
-        <a class="underlineHover" href="<?php echo route('admin.register') ?>">Register</a>
+        <a class="underlineHover" href="<?php echo route('admin.login.register') ?>">Register</a>
 
         <!-- Remind Passowrd -->
         <div id="formFooter">

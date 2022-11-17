@@ -63,7 +63,7 @@ class UserController extends Controller
         User::find($id)
         ->update([
             'email' => $email,
-            'password' => $password,
+            'password' => bcrypt($password),
         ]);
         return redirect(route('admin.users.index'));
     }

@@ -19,7 +19,7 @@
         <tr>
             <td scope="row"><?php echo $user->id; ?></td>
             <td><?php echo $user->email; ?></td>
-            <td><?php echo bcrypt($user->password); ?></td>
+            <td><?php echo $user->password; ?></td>
             <td><?php echo $user->created_at; ?></td>
             <td><?php echo $user->updated_at; ?></td>
             <td class="d-flex justify-content-around">
@@ -30,13 +30,6 @@
                     <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
-            {{-- <td>
-                <form action="<?php echo route('admin.users.delete', $user->id); ?>" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
-            </td> --}}
         </tr>
         <?php endforeach ?>
     </table>

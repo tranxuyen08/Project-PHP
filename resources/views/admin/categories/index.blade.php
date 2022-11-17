@@ -38,13 +38,6 @@
                     <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
-            {{-- <td>
-                <form method="POST" action="<?php echo route('admin.categories.delete', $category->id); ?>">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
-            </td> --}}
         </tr>
         <?php endforeach ?>
         <a class="btn btn-primary" href="<?php echo route('admin.categories.create'); ?>">Create</a>
