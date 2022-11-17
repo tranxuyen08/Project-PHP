@@ -44,13 +44,6 @@
                     <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
-            {{-- <td>
-                <form action="<?php echo route('admin.products.delete', $product->id); ?>" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Delete</button>
-                </form>
-            </td> --}}
         </tr>
         <?php endforeach ?>
     </table>

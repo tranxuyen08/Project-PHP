@@ -13,6 +13,9 @@ use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\ProductOrderController;
 use App\Http\Controllers\Admin\ProductOrdersController;
 use App\Http\Controllers\Admin\RegisterController;
+use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\RegisterController as UserRegisterController;
+use App\Http\Controllers\LoginController as UserLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -88,16 +91,29 @@ Route::prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::middleware(['guest'])->group(function () {
-    //login
+    //login adim
         Route::get('/login', [LoginController::class, 'index'])->name('login.index');
         Route::post('/login/store', [LoginController::class, 'store'])->name('login.store');
-        Route::get('/register', [LoginController::class, 'register'])->name('register');
+        Route::get('/register', [LoginController::class, 'register'])->name('login.register');
     });
 });
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomePageController::class, 'index'])->name('home.index');
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
+
+Route::middleware(['guest'])->group(function () {
+    //login
+    Route::get('/login', [UserLoginController::class, 'index'])->name('login.index');
+    Route::post('/login/store', [UserLoginController::class, 'storeLogin'])->name('login.store');
+    //register
+    Route::get('/register', [UserRegisterController::class, 'create'])->name('register.create');
+    Route::post('/store', [UserRegisterController::class, 'store'])->name('register.store');
 });
+
+Route::get('/logout', [UserLoginController::class, 'logout'])->name('home.logout');
+
+
 
 
 

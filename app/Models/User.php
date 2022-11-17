@@ -34,4 +34,8 @@ class User extends Authenticatable
         return $this->hasMany(Orders::class, 'user_id');
     }
 
+    public function loginUser() {
+        return $this->hasMany(Register::class, 'user_id');
+    }
+
 }
