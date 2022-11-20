@@ -9,7 +9,7 @@ class CategoryController extends Controller
 {
     public function show($id)
     {
-        $category = Category::with(['products'])->find($id);
+        $category = Category::with(['products', 'products.photo'])->find($id);
         return view('home.categories.show', [
             'category' => $category,
         ]);
