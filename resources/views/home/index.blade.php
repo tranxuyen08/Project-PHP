@@ -8,7 +8,7 @@
                 <a href="{{ route('categories.show', ['id' => $category->id]) }}">
 
                     <div class="card">
-                        <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
+                        <img src="<?php echo '/images/' . $category->image ?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">{{ $category->name }}</p>
                         </div>
