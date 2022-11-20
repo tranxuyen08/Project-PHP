@@ -13,11 +13,16 @@
         </ul>
     </div>
     <?php endif ?>
-
-    <form action="<?php echo route('admin.categories.update', $category->id); ?>" method="POST">
+    <?php
+        $src = !empty($category->image) ? $category->image : '';
+    ?>
+    <img width="100" src="<?php echo '/images/' . $src; ?>" alt="">
+</td>
+    <form action="<?php echo route('admin.categories.update', $category->id); ?>" method="POST"  enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <input type="text" name="name" id="" placeholder="Enter your Name" value="<?php echo $category->name; ?>">
+        <input class="mb-4" type="file" name="image" class="form-control-file">
         <button class="btn btn-secondary" type="submit">Submit</button>
     </form>
     <a class="btn btn-primary" href="<?php echo route('admin.categories.index'); ?>">List Categories Page</a>

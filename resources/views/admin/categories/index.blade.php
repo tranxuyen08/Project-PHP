@@ -14,7 +14,7 @@
             <th scope="col">Created At</th>
             <th scope="col">Updated At</th>
             <th scope="col">Action</th>
-
+            <th scope="col">Image</th>
         </tr>
         <?php foreach ($categories as $category) : ?>
         <tr>
@@ -38,6 +38,12 @@
                     <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
             </td>
+            <td class="font-weight-normal">
+                <?php
+                    $src = !empty($category->image) ? $category->image : '';
+                ?>
+                <img width="100" src="<?php echo '/images/' . $src; ?>" alt="">
+            </td>
         </tr>
         <?php endforeach ?>
         <a class="btn btn-primary" href="<?php echo route('admin.categories.create'); ?>">Create</a>
@@ -47,9 +53,9 @@
         <nav aria-label="...">
             <ul class="pagination pagination-sm">
                 <?php for ($i = 1; $i <= $totalPage; $i++) : ?>
-                    <li class="page-item {{ $page == $i ? 'disabled' : '' }}">
-                        <a class="page-link" href="?page={{ $i }}" tabindex="-1">{{ $i }}</a>
-                    </li>
+                <li class="page-item {{ $page == $i ? 'disabled' : '' }}">
+                    <a class="page-link" href="?page={{ $i }}" tabindex="-1">{{ $i }}</a>
+                </li>
                 <?php endfor ?>
             </ul>
         </nav>

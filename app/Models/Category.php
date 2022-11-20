@@ -13,7 +13,7 @@ class Category extends Model
 
     protected $primarykey = 'id';
 
-    protected $fillable = ['name', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'image', 'created_at', 'updated_at'];
 
     // $category = Category::with(['products'])->find($id); controller
     // foreach($category->products as $pro) view
