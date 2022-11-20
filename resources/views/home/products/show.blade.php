@@ -2,7 +2,15 @@
 @section('content')
     <div class="row">
         <div class="col-6">
-            <img class="w-100" src="https://picsum.photos/id/237/200/300" alt="">
+            @foreach ($product->photos as $photo)
+                <?php
+                $photo = $product->photo;
+                $src = !empty($photo) ? $photo->src : 'https://macmall.vn/uploads/pro-m1-13inch-2020-gray_1605757126.png';
+
+                $alt = !empty($photo) ? $photo->alt : '';
+                ?>
+                <img src="<?php echo $src; ?>" class="card-img-top" alt="<?php echo $alt; ?>">
+            @endforeach
         </div>
         <div class="col-6">
             <p>Name Product : {{ $product->name }}</p>

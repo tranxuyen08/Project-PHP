@@ -12,7 +12,7 @@ class Products extends Model
 
     protected $primarykey = 'id';
 
-    protected $fillable = ['category_id', 'name', 'amount', 'created_at', 'updated_at'];
+    protected $fillable = ['category_id', 'photo', 'name', 'amount', 'created_at', 'updated_at'];
 
     public function productOrders() {
         return $this->hasMany(ProductOrders::class, 'product_id');
@@ -20,5 +20,13 @@ class Products extends Model
 
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+
+    public function photos() {
+        return $this->hasMany(Photo::class, 'product_id');
+    }
+
+    public function photo() {
+        return $this->hasOne(Photo::class, 'product_id');
     }
 }

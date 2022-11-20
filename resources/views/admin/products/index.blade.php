@@ -15,6 +15,7 @@
             <th scope="col">Created At</th>
             <th scope="col">Updated At</th>
             <th scope="col">Action</th>
+            <th scope="col">Image</th>
         </tr>
         <?php foreach($products as $product) :?>
         <tr>
@@ -43,6 +44,12 @@
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Delete</button>
                 </form>
+            </td>
+            <td>
+                <?php
+                    $src = !empty($product->photo) ? $product->photo->src : '';
+                ?>
+                <img width="100" src="<?php echo '/images/' . $src ?>" alt="">
             </td>
         </tr>
         <?php endforeach ?>

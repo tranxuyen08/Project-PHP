@@ -13,9 +13,15 @@ class Photo extends Model
     protected $primarykey = 'id';
 
     protected $fillable = [
+        'product_id',
         'src',
+        'title',
         'mime_type',
         'description',
         'alt',
     ];
+
+    public function product() {
+        return $this->belongsTo(Products::class);
+    }
 }
