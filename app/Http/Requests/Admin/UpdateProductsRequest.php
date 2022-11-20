@@ -27,13 +27,16 @@ class UpdateProductsRequest extends FormRequest
             'name' => ['required'],
             'amount' => ['required'],
             'category_id' => ['required'],
+            'photo' => ['required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'],
         ];
     }
-    public function messages() {
-       return [
-        'name.required' => 'Name Is Required',
-        'amount.required' => 'Amount Is Required',
-        'category_id.required' => 'Category id Is Required'
-       ];
+    public function messages()
+    {
+        return [
+            'name.required' => 'Name Is Required',
+            'amount.required' => 'Amount Is Required',
+            'category_id.required' => 'Category id Is Required',
+            'photo.required' => 'Photo is Reqeuired',
+        ];
     }
 }

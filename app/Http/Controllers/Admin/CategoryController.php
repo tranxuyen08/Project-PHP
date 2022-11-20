@@ -32,9 +32,22 @@ class CategoryController extends Controller
 
     public function store(CreateCategoryRequest $request) {
         $name = $request->get('name');
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $randomize = rand(111111, 999999);
+            $extension = $file->getClientOriginalExtension();
+            $filename = $randomize . '.' . $extension;
+            $file->move(public_path('images'), $filename);
+
+        }
         Category::create([
             'name' => $name,
+            'image' => $filename,
         ]);
+        // Category::update([
+        //     'name' => $name,
+        //     'image' => $filename,
+        // ]);
 
         return redirect(route('admin.categories.index'));
     }
@@ -56,10 +69,18 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, $id) {
 
         $name = $request->get('name');
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $randomize = rand(111111, 999999);
+            $extension = $file->getClientOriginalExtension();
+            $filename = $randomize . '.' . $extension;
+            $file->move(public_path('images'), $filename);
 
+        }
         Category::find($id)
         ->update([
             'name' => $name,
+            'image' => $filename,
         ]);
 
         return redirect(route('admin.categories.index'));

@@ -25,12 +25,15 @@ class UpdateCategoryRequest extends FormRequest
     {
         return [
             'name' => ['required'],
+            // 'image' => ['required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'],
+
         ];
     }
 
     public function messages() {
         return [
-            'name.required' => 'Name is required'
+            'name.required' => 'Name is required',
+            'image.required' => 'Image is required',
         ];
     }
 }

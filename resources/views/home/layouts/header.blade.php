@@ -1,12 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
-        <?php if (Auth::user()): ?>
-            <p class="my-2 my-md-0 mr-md-3 p-2 text-dark font-weight-bold">{{ Auth::user()->email }}</p>
-            <a class="btn btn-danger" href="<?php echo route('home.logout'); ?>">Logout</a>
-        <?php else: ?>
-            <a class="btn btn-outline-primary" href="<?php echo route('login.index'); ?>">Sign up</a>
-        <?php endif ?>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
@@ -17,6 +11,12 @@
                         href="#contact">Contact</a></li>
             </ul>
         </div>
+        <?php if (Auth::user()): ?>
+            <p class="my-2 my-md-0 mr-md-3 p-2 text-dark font-weight-bold">{{ Auth::user()->email }}</p>
+            <a class="btn btn-danger" href="<?php echo route('home.logout'); ?>">Logout</a>
+        <?php else: ?>
+            <a class="btn btn-outline-primary" href="<?php echo route('login.index'); ?>">Sign up</a>
+        <?php endif ?>
     </div>
 </nav>
 <header class="masthead bg-primary text-white text-center">

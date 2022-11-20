@@ -7,7 +7,7 @@ Login Page
 <div class="wrapper fadeInDown">
     <div id="formContent">
         <!-- Tabs Titles -->
-        <h1 style="color: #56baed">Login Page</h1>
+        <h1 style="color: #56baed">Login Admin</h1>
         <!-- Icon -->
         <div class="fadeIn first">
             <a href="#">
