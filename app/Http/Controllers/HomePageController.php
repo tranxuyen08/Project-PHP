@@ -13,12 +13,12 @@ class HomePageController extends Controller
         // get list categories
         // get list products
         $categories = Category::select()->get();
-        $products = Products::select()->get();
-        $photo = Photo::select()->get();
+        $products = Products::with(['photo'])->select()->get();
+
         return view('home.index', [
             'categories' => $categories,
             'products' => $products,
-            'photo' => $photo,
         ]);
     }
+
 }

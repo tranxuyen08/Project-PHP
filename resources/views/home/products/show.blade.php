@@ -5,7 +5,7 @@
             @foreach ($product->photos as $photo)
                 <?php
                 $photo = $product->photo;
-                $src = !empty($photo) ? $photo->src : 'https://macmall.vn/uploads/pro-m1-13inch-2020-gray_1605757126.png';
+                $src = !empty($photo) ? '/images/' . $photo->src : 'https://macmall.vn/uploads/pro-m1-13inch-2020-gray_1605757126.png';
 
                 $alt = !empty($photo) ? $photo->alt : '';
                 ?>
