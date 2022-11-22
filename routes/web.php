@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\RegisterController as UserRegisterController;
 use App\Http\Controllers\LoginController as UserLoginController;
+use App\Http\Controllers\ProfileUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -97,10 +98,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/register', [LoginController::class, 'register'])->name('login.register');
     });
 });
-
 Route::get('/', [HomePageController::class, 'index'])->name('home.index');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
+
+//user profile
+Route::get('/user/profile', [ProfileUserController::class, 'profile'])->name('user_profile.show');
+Route::get('/user/edit', [ProfileUserController::class, 'edit'])->name('user_profile.edit');
+Route::put('/user/update', [ProfileUserController::class, 'update'])->name('user_profile.update');
+
 
 Route::middleware(['guest'])->group(function () {
     //login
@@ -109,6 +115,7 @@ Route::middleware(['guest'])->group(function () {
     //register
     Route::get('/register', [UserRegisterController::class, 'create'])->name('register.create');
     Route::post('/store', [UserRegisterController::class, 'store'])->name('register.store');
+
 });
 
 Route::get('/logout', [UserLoginController::class, 'logout'])->name('home.logout');

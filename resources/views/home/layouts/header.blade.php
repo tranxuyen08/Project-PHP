@@ -12,7 +12,7 @@
             </ul>
         </div>
         <?php if (Auth::user()): ?>
-            <p class="my-2 my-md-0 mr-md-3 p-2 text-dark font-weight-bold">{{ Auth::user()->email }}</p>
+        <a href="{{ route('user_profile.show') }}"><p class="my-2 my-md-0 mr-md-3 p-2 text-dark font-weight-bold">{{ Auth::user()->email }}</p></a>
             <a class="btn btn-danger" href="<?php echo route('home.logout'); ?>">Logout</a>
         <?php else: ?>
             <a class="btn btn-outline-primary" href="<?php echo route('login.index'); ?>">Sign up</a>

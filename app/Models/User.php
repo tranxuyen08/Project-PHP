@@ -26,7 +26,7 @@ class User extends Authenticatable
     'password',
     ];
 
-    public function userProfile() {
+    public function profile() {
         return $this->hasOne(UserProfiles::class, 'user_id');
     }
 
