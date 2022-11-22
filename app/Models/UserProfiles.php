@@ -9,11 +9,11 @@ class UserProfiles extends Model
 {
     use HasFactory;
 
-    protected $table = 'product';
+    protected $table = 'user_profiles';
 
     protected $primarykey = 'id';
 
-    protected $fillable = ['user_id', 'phone_number', 'country', 'city', 'address', 'date_of_birth', 'status', 'gender', 'created_at', 'updated_at'];
+    protected $fillable = ['user_id', 'email', 'name', 'phone', 'country', 'city', 'address', 'day_of_birth', 'status', 'gender', 'created_at', 'updated_at'];
 
     public function user() {
         return $this->belongsTo(User::class);
