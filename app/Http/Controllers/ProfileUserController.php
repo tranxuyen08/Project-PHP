@@ -13,7 +13,6 @@ class ProfileUserController extends Controller
 {
     public function profile()
     {
-
         $user = User::find(Auth::user()->id);
         return view('home.user_profile.show', [
             'user' => $user,
@@ -22,8 +21,10 @@ class ProfileUserController extends Controller
 
     public function edit()
     {
+        $user = User::find(Auth::user()->id);
         $profile = UserProfiles::where('user_id', Auth::user()->id)->first();
         return view('home.user_profile.edit', [
+            'user' => $user,
             'profile' => $profile,
         ]);
     }
