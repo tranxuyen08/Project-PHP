@@ -13,9 +13,22 @@
             @endforeach
         </div>
         <div class="col-6">
-            <p>Name Product : {{ $product->name }}</p>
-            <p>Category Name : {{ $product->category->name }}</p>
-            <p>Amount : {{ number_format($product->amount) }}</p>
+            <p><b>Name Product :</b> {{ $product->name }}</p>
+            <p><b>Category Name :</b> {{ $product->category->name }}</p>
+            <p><b>Amount :</b> {{ number_format($product->amount) }}</p>
+                   <div class="col-sm-4"></div>
+                   <div class="col-sm-4 col-sm-offset-4">
+                       <div class="input-group mb-3">
+                           <div class="input-group-prepend">
+                               <button class="btn btn-dark btn-sm" id="minus-btn"><i class="fa fa-minus"></i>-</button>
+                           </div>
+                           <input type="number" id="qty_input" class="form-control form-control-sm" value="1" min="1">
+                           <div class="input-group-prepend">
+                               <button class="btn btn-dark btn-sm" id="plus-btn"><i class="fa fa-plus"></i>+</button>
+                           </div>
+                       </div>
+                   </div>
+            <a href="#" class="btn btn-primary">Click Buy</a>
         </div>
     </div>
 @endsection

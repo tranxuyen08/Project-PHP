@@ -121,7 +121,7 @@
                                     <p class="mb-0">Phone</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?php echo $user->profile->phone; ?></p>
+                                    <p class="text-muted mb-0">{{ isset($user->profile) ? $user->profile->phone : null }}</p>
                                 </div>
                             </div>
                             <hr>
@@ -130,7 +130,7 @@
                                     <p class="mb-0">City</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?php echo $user->profile->city; ?></p>
+                                    <p class="text-muted mb-0">{{ isset($user->profile) ? $user->profile->city : null }}</p>
                                 </div>
                             </div>
                             <hr>
@@ -139,7 +139,7 @@
                                     <p class="mb-0">Country</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?php echo $user->profile->country; ?></p>
+                                    <p class="text-muted mb-0">{{ isset($user->profile) ? $user->profile->country : null }}</p>
                                 </div>
                             </div>
                             <hr>
@@ -148,7 +148,7 @@
                                     <p class="mb-0">Address</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?php echo $user->profile->address; ?></p>
+                                    <p class="text-muted mb-0">{{ isset($user->profile) ? $user->profile->address : null }}</p>
                                 </div>
                             </div>
                             <hr>
@@ -157,16 +157,11 @@
                                     <p class="mb-0">Gender</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?php echo $user->profile->gender; ?></p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">Day Of Birth</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?php echo $user->profile->day_of_birth; ?></p>
+                                    @if(isset($user->profile) && $user->profile->gender == 1)
+                                    <p class="text-muted mb-0">Nam</p>
+                                    @else
+                                    <p class="text-muted mb-0">Nu</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

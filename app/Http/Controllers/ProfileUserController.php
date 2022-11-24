@@ -38,46 +38,38 @@ class ProfileUserController extends Controller
         $dayOfBirth = $request->get('day_of_birth');
         $gender = $request->get('gender');
         $userProfile = UserProfiles::where('user_id', Auth::user()->id)->first();
-
-            if (!empty($userProfile)) {
-                if ($request->hasFile('image')) {
-                    // $request→file('image')→storeAs(<folderToBeStored>, <customName.fileExtension>)
-                    $file = $request->file('image');
-                    $randomize = rand(111111, 999999);
-                    $extension = $file->getClientOriginalExtension();
-                    $filename = $randomize . '.' . $extension;
-                    $file->move(public_path('images'), $filename);
-                }
-                UserProfiles::where('id', $userProfile->id)->update([
-                    'phone' => $phone,
-                    'city' => $city,
-                    'country' => $country,
-                    'address' => $address,
-                    'day_of_birth' => $dayOfBirth,
-                    'gender' => $gender,
-                    'image' => $filename,
-                ]);
-            } else {
-                if ($request->hasFile('image')) {
-                    // $request→file('image')→storeAs(<folderToBeStored>, <customName.fileExtension>)
-                    $file = $request->file('image');
-                    $randomize = rand(111111, 999999);
-                    $extension = $file->getClientOriginalExtension();
-                    $filename = $randomize . '.' . $extension;
-                    $file->move(public_path('images'), $filename);
-                }
-                UserProfiles::create([
-                    'user_id' =>  Auth::user()->id,
-                    'phone' => $phone,
-                    'city' => $city,
-                    'country' => $country,
-                    'address' => $address,
-                    'day_of_birth' => $dayOfBirth,
-                    'gender' => $gender,
-                    'status' => 0,
-                    'image' => $filename,
-                ]);
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $randomize = rand(111111, 999999);
+            $extension = $file->getClientOriginalExtension();
+            $filename = $randomize . '.' . $extension;
+            $file->move(public_path('images'), $filename);
         }
+
+        if (!empty($userProfile)) {
+            UserProfiles::where('id', $userProfile->id)->update([
+                'phone' => $phone,
+                'city' => $city,
+                'country' => $country,
+                'address' => $address,
+                'day_of_birth' => $dayOfBirth,
+                'gender' => $gender,
+                'image' => $filename,
+            ]);
+        } else {
+            UserProfiles::create([
+                'user_id' =>  Auth::user()->id,
+                'phone' => $phone,
+                'city' => $city,
+                'country' => $country,
+                'address' => $address,
+                'day_of_birth' => $dayOfBirth,
+                'gender' => $gender,
+                'status' => 0,
+                'image' => $filename,
+            ]);
+        }
+
         return redirect(route('user_profile.show'));
     }
 }
