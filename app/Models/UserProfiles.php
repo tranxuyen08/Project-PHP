@@ -13,7 +13,7 @@ class UserProfiles extends Model
 
     protected $primarykey = 'id';
 
-    protected $fillable = ['user_id', 'email', 'name', 'phone', 'country', 'city', 'address', 'day_of_birth', 'status', 'gender', 'created_at', 'updated_at'];
+    protected $fillable = ['user_id', 'image', 'email', 'name', 'phone', 'country', 'city', 'address', 'day_of_birth', 'status', 'gender', 'created_at', 'updated_at'];
 
     public function user() {
         return $this->belongsTo(User::class);

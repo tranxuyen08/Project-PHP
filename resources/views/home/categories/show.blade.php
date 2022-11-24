@@ -1,7 +1,7 @@
 @extends('home.layouts.app')
 @section('content')
 
-    <p>San pham noi bac</p>
+    <h3>San pham noi bac</h3>
     <div class="row mb-4">
         @foreach ($category->products as $product)
             <?php

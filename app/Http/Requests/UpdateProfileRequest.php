@@ -30,6 +30,7 @@ class UpdateProfileRequest extends FormRequest
             'address' => ['required', 'max:255'],
             'gender' => ['required', 'in:0,1'],
             'day_of_birth' => ['required', 'date'],
+            'image' => ['required'],
         ];
     }
 }
